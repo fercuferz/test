@@ -33,7 +33,11 @@
 node {
     checkout scm //Para hacer el checkout del contenido del proyecto
     stage ('Build') {
-        sh 'mvn compile'
+        withMaven( //Esto lo tengo porque estoy usando el Pipeline Maven Integration
+            maven:'Maven Test' //Permite especificar la versión del maven a utilizar
+        ){
+            sh 'mvn compile'
+        }
     }
     stage ('Test') {
         sh 'mvn test'
