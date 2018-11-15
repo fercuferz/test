@@ -40,7 +40,11 @@ node {
         }
     }
     stage ('Test') {
-        sh 'mvn test'
+        withMaven( //Esto lo tengo porque estoy usando el Pipeline Maven Integration
+            maven:'Maven Test' //Permite especificar la versión del maven a utilizar
+        ){
+            sh 'mvn test'
+        }
         junit '**/target/*.xml' //El plugin de publicar en el jenkins los xml de los tests
     }
     stage ('Deploy') {
