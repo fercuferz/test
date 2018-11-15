@@ -43,9 +43,8 @@ node {
         withMaven( //Esto lo tengo porque estoy usando el Pipeline Maven Integration
             maven:'Maven Test' //Permite especificar la versión del maven a utilizar
         ){
-            sh 'mvn test'
+            sh 'mvn test' //El withmaven de arriba publica automaticamente en el jenkins los xml de los tests
         }
-        junit '**/target/*.xml' //El plugin de publicar en el jenkins los xml de los tests
     }
     stage ('Deploy') {
         sh 'mvn package'
