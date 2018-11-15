@@ -30,14 +30,13 @@
 node {
     checkout scm //Para hacer el checkout del contenido del proyecto
     stage ('Build') {
-        echo 'Hola mundo'
-        mvn compile
+        sh 'mvn compile'
     }
-    stage ('Build') {
-        echo 'Hola mundo'
+    stage ('Test') {
+        sh 'mvn test'
     }
-    stage ('Build') {
-        echo 'Hola mundo'
+    stage ('Deploy') {
+         sh 'mvn package'
     }
 
 }
