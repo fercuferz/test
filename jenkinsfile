@@ -52,7 +52,7 @@ node {
         ){
             sh 'mvn package' 
         }
-        sh 'cp **/target*.jar /home/ivan/carpeta/lib'
+        sh 'cp **/target/*.jar /home/ivan/carpeta/lib'
         sh 'rm -rf .'
 
     }
