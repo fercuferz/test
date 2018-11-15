@@ -52,8 +52,8 @@ node {
         ){
             sh 'mvn package' 
         }
-        sh 'cp **/target/*.jar /home/ivan/carpeta/lib'
-        sh 'rm -rf .'
+        sh 'cp ${WORKSPACE}/target/*.jar /home/ivan/carpeta/lib'
+        deleteDir
 
     }
 
