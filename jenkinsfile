@@ -41,10 +41,10 @@ node {
     }
     stage ('Test') {
         sh 'mvn test'
+        junit '**/target/*.xml' //El plugin de publicar en el jenkins los xml de los tests
     }
     stage ('Deploy') {
         sh 'mvn package'
-        junit '**/target/*.xml' //El plugin de publicar en el jenkins los xml de los tests
     }
 
 }
