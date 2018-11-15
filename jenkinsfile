@@ -1,10 +1,10 @@
 // Sintáxis declarativa
 pipeline { //Obligatorio
     agent any //Los quevan a realizar la tarea. any: Cualquiera disponible
-    checkout scm //Es lo típico hacer el checkout
-    tools {
-        maven 'Maven Test' //Indica las cosas necesarias. Están en Admnistración Global Tool
-    }
+    //checkout scm //Es lo típico hacer el checkout
+    //tools {
+    //    maven 'Maven Test' //Indica las cosas necesarias. Están en Admnistración Global Tool
+    //}
     stages { //Son las distintas cosas que se van a ir haciendo. Equivalente a los build stages
         stage ('Build') {
             steps {
