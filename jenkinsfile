@@ -57,13 +57,17 @@ node {
         }
     }
     stage ('Deploy') {
-       withMaven( //Esto lo tengo porque estoy usando el Pipeline Maven Integration
-            maven:'Maven Test' //Permite especificar la versión del maven a utilizar
-        ){
-            sh 'mvn package' 
+        try{
+               withMaven( //Esto lo tengo porque estoy usando el Pipeline Maven Integration
+                    maven:'Maven Test' //Permite especificar la versión del maven a utilizar
+                ){
+                    sh 'mvn package' 
+                }
+                sh 'cp ${WORKSPACE}/target/*.jar /home/ivan/carpeta/lib'
         }
-        sh 'cp ${WORKSPACE}/target/*.jar /home/ivan/carpeta/lib'
-        deleteDir()
+        finally{
+            deleteDir()
+        }
 
     }
 
