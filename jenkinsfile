@@ -8,18 +8,18 @@ pipeline { //Obligatorio
     stages { //Son las distintas cosas que se van a ir haciendo. Equivalente a los build stages
         stage ('Build') {
             steps {
-                echo 'Build'
+                echo 'Building...'
                 //sh 'mvn --version'
             }
         }
         stage ('Test') {
             steps {  
-                echo 'Test'
+                echo 'Testing...'
             }
         }
         stage ('Deploy') {
             steps {  
-                echo 'Deploy'
+                echo 'Deploying...'
             }
         }
     }
