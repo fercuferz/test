@@ -1,5 +1,5 @@
 // Sintáxis declarativa
-pipeline { //Obligatorio
+/*pipeline { //Obligatorio
     agent any //Los quevan a realizar la tarea. any: Cualquiera disponible
     //tools {
     //    maven 'Maven Test' //Indica las cosas necesarias. Están en Admnistración Global Tool
@@ -22,13 +22,14 @@ pipeline { //Obligatorio
             }
         }
     }
-}
+}*/
 
 
 
 //Sintáxis de scripting. Se indica para cada nodo (agente) que es lo que hay que hacer
-/*node {
+node {
+    checkout scm //Para hacer el checkout del contenido del proyecto
     stage ('Etapa 1') {
         echo 'Hola mundo'
     }
-}*/
+}
