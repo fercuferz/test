@@ -47,7 +47,14 @@ node {
         }
     }
     stage ('Deploy') {
-        sh 'mvn package'
+       withMaven( //Esto lo tengo porque estoy usando el Pipeline Maven Integration
+            maven:'Maven Test' //Permite especificar la versión del maven a utilizar
+        ){
+            sh 'mvn package' 
+        }
+        sh 'cp **/target*.jar /home/ivan/carpeta/lib'
+        sh 'rm -rf .'
+
     }
 
 }
