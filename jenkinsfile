@@ -34,7 +34,7 @@ def userInput = input(
         parameters: [
                 string(defaultValue: 'None',
                         description: 'Path of config file',
-                        name: 'Config'),
+                        name: 'Config')
          ])
 inputConfig = userInput.Config?:''
 
