@@ -1,3 +1,6 @@
+#!/usr/bin/env groovy   //Para que los IDE's coloreen adecuadamente
+
+
 // Sintáxis declarativa
 /*pipeline { //Obligatorio
     agent any //Los quevan a realizar la tarea. any: Cualquiera disponible
