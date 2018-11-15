@@ -27,12 +27,22 @@
     }
 }*/
 
-
+// Get the input
+def inputConfig
+def userInput = input(
+        id: 'userInput', message: 'Enter path of test reports:?',
+        parameters: [
+                string(defaultValue: 'None',
+                        description: 'Path of config file',
+                        name: 'Config'),
+         ])
+inputConfig = userInput.Config?:''
 
 //Sintáxis de scripting. Es la más moderna. Se indica para cada nodo (agente) que es lo que hay que hacer
 node {
     checkout scm //Para hacer el checkout del contenido del proyecto
     stage ('Build') {
+        sh 'echo ${inputConfig}'
         withMaven( //Esto lo tengo porque estoy usando el Pipeline Maven Integration
             maven:'Maven Test' //Permite especificar la versión del maven a utilizar
         ){
