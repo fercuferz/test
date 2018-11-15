@@ -1,7 +1,7 @@
 // Sintáxis declarativa
 pipeline { //Obligatorio
     agent any //Los quevan a realizar la tarea. any: Cualquiera disponible
-    checkout scm //Es lo típico hacer el checkout
+    checkout scm //Hace el checkout completo del proyecto
     //tools {
     //    maven 'Maven Test' //Indica las cosas necesarias. Están en Admnistración Global Tool
     //}
