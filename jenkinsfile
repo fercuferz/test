@@ -53,7 +53,7 @@ node {
             sh 'mvn package' 
         }
         sh 'cp ${WORKSPACE}/target/*.jar /home/ivan/carpeta/lib'
-        deleteDir
+        deleteDir()
 
     }
 
