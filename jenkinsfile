@@ -29,7 +29,15 @@
 //Sintáxis de scripting. Es la más moderna. Se indica para cada nodo (agente) que es lo que hay que hacer
 node {
     checkout scm //Para hacer el checkout del contenido del proyecto
-    stage ('Etapa 1') {
+    stage ('Build') {
+        echo 'Hola mundo'
+        mvn compile
+    }
+    stage ('Build') {
         echo 'Hola mundo'
     }
+    stage ('Build') {
+        echo 'Hola mundo'
+    }
+
 }
