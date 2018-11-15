@@ -43,7 +43,8 @@ node {
         sh 'mvn test'
     }
     stage ('Deploy') {
-         sh 'mvn package'
+        sh 'mvn package'
+        junit '**/target/*.xml' //El plugin de publicar en el jenkins los xml de los tests
     }
 
 }
