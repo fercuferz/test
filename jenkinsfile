@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy   //Para que los IDE's coloreen adecuadamente
 
-//Para crear tareas con el entorno gráfico y generar con la sintáxis de pipeline
+//Para crear tareas con el entorno gráfico y generar con la sintáxis de pipeline. Hay algunos plugins que no tienen implementada esta ayuda
 //<URL Jenkins>/pipeline-syntax/
 
 
