@@ -87,7 +87,7 @@ node {
         echo 'Se ejecuta si fallo'
         throw e //importante
     } finally {
-        def currentResult = currentBuild.result ? 'SUCCESS' : 'FAILURE'
+        def currentResult = currentBuild.result ? 'SUCCESS' : 'FAILURE' 
         if (currentResult == 'FAILURE') {
             echo 'Se ejecuta si ha habido fallo'
         }
@@ -100,3 +100,30 @@ node {
         echo 'Se ejecuta siempre'
     }
 }
+
+/*
+//Versión igual que lo anterior pero en la sintáxis antigua
+pipeline {
+    agent any
+    stages {
+        stage('Paso 1') {
+            steps {
+                //Mi operacion
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Siempre'
+        }
+        success {
+            echo 'Exito'
+        }
+        failure {
+            echo 'Fallo'
+        }
+        changed {
+            echo 'Cambio'
+        }
+    }
+}*/
