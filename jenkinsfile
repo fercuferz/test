@@ -79,6 +79,11 @@ node {
 */
 
 
+//Para indicar que algo se ejecute en un nodo concreto:
+//  Forma nueva: node ('<nombre nodo>')
+//  Forma antigua: agent {lable '<nombre nodo')
+//  Por interfaz: En la Configuración de la tarea usar la opción" Restringir dónde se puede ejecutar este proyecto."
+
 //Plantilla para encadenar tareas
 node {
     try {
