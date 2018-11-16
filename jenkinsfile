@@ -30,8 +30,8 @@
     }
 }*/
 
-/*
-// Get the input
+
+/*// Get the input
 def inputConfig
 def userInput = input(
         id: 'userInput', message: 'Enter path of test reports:?',
@@ -40,7 +40,7 @@ def userInput = input(
                         description: 'Path of config file',
                         name: 'Config')
          ])
-inputConfig = userInput.Config?:''
+inputConfig = userInput.Config?:''*/
 
 //Sintáxis de scripting. Es la más moderna. Se indica para cada nodo (agente) que es lo que hay que hacer
 node {
@@ -66,6 +66,8 @@ node {
                     maven:'Maven Test' //Permite especificar la versión del maven a utilizar
                 ){
                     sh 'mvn package' 
+                   git add target
+                   git commit-am 'ok'
                 }
                 sh 'cp ${WORKSPACE}/target/*.jar /home/ivan/carpeta/lib'
         }
@@ -76,7 +78,7 @@ node {
     }
 
 }
-*/
+
 
 
 //Para indicar que algo se ejecute en un nodo concreto:
@@ -84,6 +86,7 @@ node {
 //  Forma antigua: agent {lable '<nombre nodo')
 //  Por interfaz: En la Configuración de la tarea usar la opción" Restringir dónde se puede ejecutar este proyecto."
 
+/*
 //Plantilla para encadenar tareas
 node {
     try {
@@ -114,7 +117,7 @@ node {
 
         echo 'This will always run'
     }
-}
+}*/
 
 /*
 //Versión igual que lo anterior pero en la sintáxis antigua
