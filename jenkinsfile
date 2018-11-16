@@ -1,5 +1,8 @@
 #!/usr/bin/env groovy   //Para que los IDE's coloreen adecuadamente
 
+//Para crear tareas con el entorno gráfico y generar con la sintáxis de pipeline
+//<URL Jenkins>/pipeline-syntax/
+
 
 // Sintáxis declarativa
 /*pipeline { //Obligatorio
@@ -80,24 +83,31 @@ node {
 node {
     try {
         stage('Test') {
-            sh 'echo "Fallo!"; exit 0' //El exit 1 indica fallo. En windows en lugar de sh sería bat
+            sh 'echo "Fail!"; exit 1'
         }
-        echo 'Se ejecuta si exito'
+        echo 'This will run only if successful'
     } catch (e) {
-        echo 'Se ejecuta si fallo'
-        throw e //importante
+        echo 'This will run only if failed'
+
+        // Since we're catching the exception in order to report on it,
+        // we need to re-throw it, to ensure that the build is marked as failed
+        throw e
     } finally {
-        def currentResult = currentBuild.result ? 'SUCCESS' : 'FAILURE' 
-        if (currentResult == 'FAILURE') {
-            echo 'Se ejecuta si ha habido fallo'
+        //The currentBuild variable may be used to refer to the currently running build. It has the following readable properties:
+        //result
+            //typically SUCCESS, UNSTABLE, or FAILURE (may be null for an ongoing build)
+        def currentResult = currentBuild.result ?: 'SUCCESS' //Operador elvis es para no tener que repetir Ej en displayName = user.name ? user.name : 'Anonymous' puedo quitar el user.name segundo
+        if (currentResult == 'UNSTABLE') {
+            echo 'This will run only if the run was marked as unstable'
         }
 
         def previousResult = currentBuild.previousBuild?.result
         if (previousResult != null && previousResult != currentResult) {
-            echo 'Se ejecuta si hay cambio de estado'
+            echo 'This will run only if the state of the Pipeline has changed'
+            echo 'For example, if the Pipeline was previously failing but is now successful'
         }
 
-        echo 'Se ejecuta siempre'
+        echo 'This will always run'
     }
 }
 
@@ -106,24 +116,28 @@ node {
 pipeline {
     agent any
     stages {
-        stage('Paso 1') {
+        stage('Test') {
             steps {
-                //Mi operacion
+                sh 'echo "Fail!"; exit 1'
             }
         }
     }
     post {
         always {
-            echo 'Siempre'
+            echo 'This will always run'
         }
         success {
-            echo 'Exito'
+            echo 'This will run only if successful'
         }
         failure {
-            echo 'Fallo'
+            echo 'This will run only if failed'
+        }
+        unstable { //Quiere decir que han fallado mayoritariamente entre las 5 últimas (inestable)
+            echo 'This will run only if the run was marked as unstable'
         }
         changed {
-            echo 'Cambio'
+            echo 'This will run only if the state of the Pipeline has changed'
+            echo 'For example, if the Pipeline was previously failing but is now successful'
         }
     }
 }*/
